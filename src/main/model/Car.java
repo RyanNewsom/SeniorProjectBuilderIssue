@@ -21,6 +21,10 @@ public class Car {
         mModel = model;
     }
 
+    public void setOtherCars(List<Car> otherCars) {
+        mOtherCars = otherCars;
+    }
+
     public List<Car> getOtherCars() {
         return mOtherCars;
     }
@@ -36,7 +40,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "mManufacturer='" + mManufacturer + '\'' +
+                "mOtherCars=" + mOtherCars +
+                ", mManufacturer='" + mManufacturer + '\'' +
                 ", mModel='" + mModel + '\'' +
                 '}';
     }

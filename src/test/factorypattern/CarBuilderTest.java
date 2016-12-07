@@ -1,5 +1,6 @@
 package test.factorypattern;
 
+import main.RyLog;
 import main.factorypattern.CarBuilder;
 import main.model.Car;
 import main.model.CarDb;
@@ -17,8 +18,12 @@ import static org.junit.Assert.*;
  * Created by Ryan on 12/6/2016.
  */
 public class CarBuilderTest {
+    private static final String TAG = "CarBuilderTest";
     private Car mDomainCar;
     private CarDb mDatabaseCar;
+    List<Car> cars;
+    List<CarDb> dbCars;
+
     private final Car car1 = new Car("Subaru", "Wrx");
     private final Car car2 = new Car("Ford", "Mustang GT350R");
     private final Car car3 = new Car("Dodge", "Challenger Hellcat");
@@ -35,11 +40,13 @@ public class CarBuilderTest {
 
 
 
+
+
     @Before
     public void setUp() throws Exception {
 
-        List<Car> cars = new ArrayList<>();
-        List<CarDb> dbCars = new ArrayList<>();
+        cars = new ArrayList<>();
+        dbCars = new ArrayList<>();
 
         cars.add(car1);
         cars.add(car2);
@@ -58,8 +65,10 @@ public class CarBuilderTest {
 
     @Test
     public void testNestedChildrenOfSameType(){
-        CarDb carDb = new CarDb("Tesla", "Model S P90D");
+        CarDb carDb = new CarDb("Tesla", "Model S P90D", dbCars);
         Car car = CarBuilder.build(carDb);
+
+        RyLog.d(TAG, car.toString());
         Assert.assertNotNull(car);
     }
 }

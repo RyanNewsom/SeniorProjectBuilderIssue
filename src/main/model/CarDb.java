@@ -6,8 +6,11 @@ import java.util.List;
  * Created by Ryan on 12/6/2016.
  */
 public class CarDb extends Car {
-    public CarDb(String manufacturer, String model, List<Car> cars) {
-        super(manufacturer, model, cars);
+    private List<CarDb> mOtherCarsDb;
+
+    public CarDb(String manufacturer, String model, List<CarDb> cars) {
+        super(manufacturer, model);
+        mOtherCarsDb = cars;
     }
 
 
@@ -15,5 +18,7 @@ public class CarDb extends Car {
         super(manufacturer, model);
     }
 
-
+    public List<CarDb> getOtherCarsDb() {
+        return mOtherCarsDb;
+    }
 }
